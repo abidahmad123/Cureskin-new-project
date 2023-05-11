@@ -14,6 +14,6 @@ driver = webdriver.Chrome(service=service)
 driver.get('https://www.amazon.com/')
 
 driver.find_element(By.ID, "twotabsearchtextbox").send_keys("car")
-
+driver.find_element(By.ID, 'nav-search-submit-button')
 sleep(10)
 
