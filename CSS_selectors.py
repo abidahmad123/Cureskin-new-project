@@ -29,4 +29,3 @@ driver.find_element(By.CSS_SELECTOR, "a[href='/gp/help/customer/display.html/ref
 
 driver.find_element(By.CSS_SELECTOR, 'a#a-link-emphasis')
 
-
