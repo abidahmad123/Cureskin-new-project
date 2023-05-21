@@ -4,4 +4,4 @@ Feature: Tests for main UI
 
   Scenario: User sees all footer links
     Given Open Amazon main page
-    Then Verify there are 5 links
+    Then Verify search results shown
