@@ -4,7 +4,7 @@ Feature: Amazon Search tests
 
   Scenario: user can search on Amazon
     Given Open Amazon main page
-    When Search for cart
+    When Search for Best Sellers
     Then Verify search results shown
 
 
