@@ -1,10 +1,10 @@
 # Created by abidahmad at 5/9/23
-Feature: Amazon Search tests
-
-
-  Scenario: User can search on Amazon
-    Given Open Best Sellers page
-    #When Search for Best Sellers
-    Then Verify search results shown
+Scenario: User can open and close Amazon Privacy Notice
+ Given Open Amazon T&C page
+ When Store original windows
+ And Click on Amazon Privacy Notice link (*see image below)
+ And Switch to the newly opened window
+ Then Verify Amazon Privacy Notice page is opened
+ And User can close new window and switch back to original
 
 
