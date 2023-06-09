@@ -2,31 +2,35 @@ from selenium.webdriver.common.by import By
 from behave import given, when, then
 from time import sleep
 
-
-SEARCH_INPUT = (By.NAME, 'q')
-SEARCH_SUBMIT = (By.NAME, 'btnK')
-
-
-@given('Open Google page')
-def open_google(context):
-    context.driver.get('https://www.google.com/')
+PRODUCT_NAME = (By.CSS_SELECTOR, 'span#productTitle')
+COLOR_OPTIONS = (By.CSS_SELECTOR, 'li[title]')
+CURRENT_COLOR = (By.CSS_SELECTOR, 'span.selection')
 
 
-@when('Input {search_word} into search field')
-def input_search(context, search_word):
-    search = context.driver.find_element(*SEARCH_INPUT)
-    search.clear()
-    search.send_keys(search_word)
-    sleep(4)
-
-
-@when('Click on search icon')
-def click_search_icon(context):
-    context.driver.find_element(*SEARCH_SUBMIT).click()
+@given('Open amazon product page')
+def open_amazon(context):
+    context.driver.get('https://www.amazon.com/gp/product/B07BJKRR25/')
     sleep(1)
 
+@when('Store product name')
+def click_on_product(context):
+    context.product_name = context.driver.find_element(*PRODUCT_NAME).text
+    print(context.product_name)
 
-@then('Product results for {search_word} are shown')
-def verify_found_results_text(context, search_word):
-    assert search_word.lower() in context.driver.current_url.lower(), \
-        f'Expected query not in {context.driver.current_url.lower()}'
+
+@then('Verify user can choose colors')
+def click_through_colors(context):
+    expected_colors = ['Black', 'Blue, Over Dye', 'Bright White',]
+    actual_colors = []
+
+
+    colors = context.driver.find_elements(*COLOR_OPTIONS)
+
+    for color in colors[:3]:
+        color.click()
+        sleep(1)
+        current_color = context.driver.find_element(*CURRENT_COLOR).text
+        actual_colors += [current_color]
+        print(actual_colors)
+
+    assert expected_colors == actual_colors
