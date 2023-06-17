@@ -1,51 +1,40 @@
-def print_reverse(statement):
-    words = statement.split()
-    reversed_words = list(reversed(words))
-    reversed_statement = " ".join(reversed_words)
-    print(reversed_statement)
+def increment_integer(digits):
+    n = len(digits)
+    carry = 1
 
-input_statement = "Everything is hard before it is easy"
+    for i in range(n - 1, -1, -1):
+        digits[i] += carry
+        carry = digits[i] // 10
+        digits[i] %= 10
 
-print_reverse(input_statement)
+        if carry == 0:
+            break
 
-def print_permutations(string):
-    permutations = []
+    if carry == 1:
+        digits.insert(0, 1)
 
-    def generate_permutations(string, start, end):
-        if start == end:
-            permutations.append("".join(string))
-        else:
-            for i in range(start, end + 1):
-                string[start], string[i] = string[i], string[start]
-                generate_permutations(string, start + 1, end)
-                string[start], string[i] = string[i], string[start]  # backtrack
+    return digits
 
-    char_list = list(string)
-    generate_permutations(char_list, 0, len(char_list) - 1)
-
-    for permutation in permutations:
-        print(permutation)
-
-input_string = "ABC"
-print_permutations(input_string)
-
-def count_vowels_and_consonants(string):
-    vowels = 0
-    consonants = 0
-
-    string = string.lower()
-
-    vowel_set = set('aeiou')
-
-    for char in string:
-        if char.isalpha():
-            if char in vowel_set:
-                vowels += 1
-            else:
-                consonants += 1
-
-    return {'Vowels': vowels, 'Consonants': consonants}
-
-input_string = "hello world"
-result = count_vowels_and_consonants(input_string)
+digits = [1, 2, 9]
+result = increment_integer(digits)
 print(result)
+
+def even_first(nums):
+    left = 0
+    right = len(nums) - 1
+
+    while left <= right:
+        if nums[left] % 2 == 0:
+            left += 1
+        elif nums[right] % 2 != 0:
+            right -= 1
+        else:
+            nums[left], nums[right] = nums[right], nums[left]
+            left += 1
+            right -= 1
+
+    return nums
+
+numbers = [7, 3, 5, 6, 4, 10, 3, 2]
+reordered = even_first(numbers)
+print(reordered)
