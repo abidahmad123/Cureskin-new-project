@@ -1,5 +1,7 @@
 Feature: cureskin Search tests
 
   Scenario: user can search on cureskin
-    Given Open Cureskin main page
-    When Search for Shop by Product
+    Given Open main page
+    When Click on Shop by product button
+    And Click Sunscreen
+
