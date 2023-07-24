@@ -1,12 +1,20 @@
 from selenium.webdriver.common.by import By
-from pages.base_page import page
+from pages.base_page import Page
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import Select
+from time import sleep
+class Header(Page):
 
-class Header(page):
-    SHOP_BY_PROD_BTN = (By.XPATH, "//span[@class='label'][normalize-space()='Shop by Product']")
-    SUNSCREENS_BTN = (By.XPATH, "//span[@class='label'][normalize-space()='Sunscreens']")
+    SHOP_BY_PRODUCT = (By.XPATH, "//span[@class='label'][normalize-space()='Shop by Product']")
+    SUNSCREEN = (By.XPATH, "//span[@class='label'][normalize-space()='Sunscreens']")
 
-    def search_for_product(self):
-        self.input_text('Shop by Product', *self.SEARCH_FILED)
-        self.click(*self.SEARCH_BTN)
+
+    def click_shop_by_prod(self):
+        self.click(*self.SHOP_BY_PRODUCT)
+        sleep(5)
+
+    def click_sunscreen(self):
+        self.click(*self.SUNSCREEN)
+        sleep(5)
 
 

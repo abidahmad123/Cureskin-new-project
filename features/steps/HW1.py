@@ -11,8 +11,6 @@ def open_main_page(context):
 def click_shop_by_prod(context):
     context.app.header.click_shop_by_prod()
 
-
 @when("Click Sunscreen")
 def click_sunscreen(context):
     context.app.header.click_sunscreen()
-

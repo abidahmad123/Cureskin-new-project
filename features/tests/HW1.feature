@@ -4,4 +4,3 @@ Feature: cureskin Search tests
     Given Open main page
     When Click on Shop by product button
     And Click Sunscreen
-
