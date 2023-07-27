@@ -4,3 +4,6 @@ Feature: cureskin Search tests
     Given Open main page
     When Click on Shop by product button
     And Click Sunscreen
+    Then Verify first product is SPF30
+
+

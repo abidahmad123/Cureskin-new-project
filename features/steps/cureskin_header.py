@@ -7,3 +7,4 @@ from selenium.webdriver.support import expected_conditions as EC
 @when('From Header Page, click "Search"')
 def click_search(context):
     context.app.header.click_search()
+

@@ -14,3 +14,7 @@ def click_shop_by_prod(context):
 @when("Click Sunscreen")
 def click_sunscreen(context):
     context.app.header.click_sunscreen()
+
+@then('Verify first product is SPF30')
+def verify_first_product(context):
+   context.app.header.verify_first_product()
